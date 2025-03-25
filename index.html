@@ -1,7 +1,201 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mason Wheare | Personal Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="timeline.js" defer></script>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+    <header>
+        <nav>
+            <div class="logo">Mason Wheare</div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#timeline" class="nav-link">Timeline</a>
+                <a href="#goals" class="nav-link">Goals</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="particles-container" id="particles-js"></div>
+        <div class="hero-content">
+            <div class="hero-text-container">
+                <h1 class="animate-text">Mason <span class="highlight">Wheare</span></h1>
+                <div class="typewriter">
+                    <p class="animate-text-delay">I'm a <span class="typed-text"></span></p>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#about" class="btn btn-primary">About Me</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/masonwgit" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+                    <a href="https://instagram.com/mason.wheare" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com/in/mason-wheare" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="arrow">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="image-container">
+                        <div class="image-placeholder">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <p>I'm a dedicated and hardworking individual with a passion for technology and cybersecurity. Currently working as a Pharmacy Assistant, I'm building practical skills in a professional environment while pursuing my interest in digital security.</p>
+                    <p>With experience in customer service and a background in leadership as a former School Captain, I bring strong communication skills and a commitment to excellence to everything I do.</p>
+                    <p>I'm actively involved in the Young Liberals, demonstrating my interest in policy and community engagement. My goal is to complete a Bachelor of Cybersecurity at RMIT and build a career protecting digital infrastructure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="timeline" class="timeline">
+        <div class="container">
+            <h2 class="section-title">My Journey</h2>
+            <div class="timeline-container">
+                <!-- Timeline items will be loaded dynamically from XML -->
+            </div>
+        </div>
+    </section>
+
+    <section id="goals" class="goals">
+        <div class="container">
+            <h2 class="section-title">Future Goals</h2>
+            <div class="goals-container">
+                <div class="goal-card">
+                    <div class="goal-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Bachelor of Cybersecurity</h3>
+                    <p>Planning to study at RMIT University to gain comprehensive knowledge in cybersecurity principles, ethical hacking, and digital forensics.</p>
+                </div>
+                <div class="goal-card">
+                    <div class="goal-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Cybersecurity Career</h3>
+                    <p>Aspire to build a career in cybersecurity, protecting digital infrastructure and helping organizations maintain their security posture.</p>
+                </div>
+                <div class="goal-card">
+                    <div class="goal-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Professional Certifications</h3>
+                    <p>Aim to obtain industry-recognized certifications such as CompTIA Security+, CEH, and CISSP to validate my expertise.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Email</h3>
+                            <p>contact@masonwheare.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Location</h3>
+                            <p>Melbourne, Australia</p>
+                        </div>
+                    </div>
+                    <div class="contact-social">
+                        <h3>Connect With Me</h3>
+                        <div class="social-links">
+                            <a href="https://github.com/masonwgit" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+                            <a href="https://instagram.com/mason.wheare" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                            <a href="https://linkedin.com/in/mason-wheare" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="discord-form">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Mason Wheare</div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#timeline">Timeline</a>
+                    <a href="#goals">Goals</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://github.com/masonwgit" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://instagram.com/mason.wheare" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com/in/mason-wheare" target="_blank"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Mason Wheare. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
-</html>
+</html> 
