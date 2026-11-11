@@ -1,5 +1,9 @@
-// The menu screen: highlight a bar to see its card, open a section for its sub-items,
-// and the camera moves to that section's shot. Works with mouse, touch and keyboard.
+// The menu screen.
+// Desktop: highlight a bar to see its card in the box, click a section to open its sub-items.
+// Phones: the menu sits under the scene, a section drills down in place, details slide up
+// in a sheet, and the back gesture closes the sheet, then the section, before leaving.
+const narrowQuery = matchMedia('(max-width: 899px)');
+
 export function initUI({ still }) {
   const root = document.documentElement;
   root.classList.add('js');
@@ -8,6 +12,9 @@ export function initUI({ still }) {
   const pointer = menu.querySelector('.pointer');
   const mains = [...menu.querySelectorAll(':scope > ul > li')];
   const box = document.querySelector('.box');
+  const body = box.querySelector('.box__body');
+  const closeBtn = box.querySelector('.box__close');
+  const scrim = document.querySelector('.scrim');
   const cards = [...box.querySelectorAll('.card')];
   const clock = document.querySelector('[data-clock]');
 
@@ -15,24 +22,31 @@ export function initUI({ still }) {
   let current = null;
   let shot = 0;
   let shotTimer = 0;
+  let sheetOpen = false;
+  let opener = null;
+  const layers = []; // phone only: what the back gesture should close, innermost last
 
   for (const li of mains) {
     const sub = li.querySelector('.sub');
     if (sub) sub.hidden = true;
   }
 
+  const narrow = () => narrowQuery.matches;
   const mainOf = (btn) => btn.closest('.menu > ul > li');
   const isMain = (btn) => btn.classList.contains('bar');
+  const subOf = (li) => li?.querySelector('.sub') ?? null;
 
   function showCard(key) {
     for (const c of cards) c.hidden = c.dataset.card !== key;
     box.scrollTop = 0;
+    body.scrollTop = 0;
   }
 
   function placePointer() {
     if (!current) return;
     const m = menu.getBoundingClientRect();
     const r = current.getBoundingClientRect();
+    if (!r.height) return;
     const x = r.left - m.left - (isMain(current) ? 40 : 38);
     const y = r.top - m.top + r.height / 2 - 14;
     pointer.style.transform = `translate(${Math.round(x)}px, ${Math.round(y)}px)`;
@@ -58,25 +72,69 @@ export function initUI({ still }) {
       goToShot(li);
       placePointer();
     }
-    if (focus) btn.focus();
+    if (focus) btn.focus({ preventScroll: true });
   }
 
   function openSub(li, focusFirst = false) {
     let opened = false;
     for (const m of mains) {
-      const sub = m.querySelector('.sub');
-      if (!sub) continue;
-      const open = m === li;
-      sub.hidden = !open;
-      m.querySelector('.bar').setAttribute('aria-expanded', String(open));
+      const sub = subOf(m);
+      const open = !!sub && m === li;
+      if (sub) {
+        sub.hidden = !open;
+        m.querySelector('.bar').setAttribute('aria-expanded', String(open));
+      }
+      m.classList.toggle('is-open', open);
       opened ||= open;
     }
+    menu.classList.toggle('is-open', opened);
     requestAnimationFrame(placePointer);
     if (opened && focusFirst) highlight(li.querySelector('.sub__bar'), { focus: true });
     return opened;
   }
 
+  function closeSection() {
+    const li = mains.find((m) => m.classList.contains('is-open'));
+    openSub(null);
+    if (li) highlight(li.querySelector('.bar'), { focus: !narrow() });
+  }
+
+  // phone details sheet
+  function openSheet() {
+    if (sheetOpen) return;
+    sheetOpen = true;
+    opener = current;
+    scrim.hidden = false;
+    box.classList.add('is-open');
+    pushLayer('sheet');
+    closeBtn.focus({ preventScroll: true });
+  }
+  function closeSheet() {
+    if (!sheetOpen) return;
+    sheetOpen = false;
+    box.classList.remove('is-open');
+    scrim.hidden = true;
+    opener?.focus({ preventScroll: true });
+  }
+
+  // each phone layer gets a history entry, so the back gesture peels them off in order
+  function pushLayer(kind) {
+    layers.push(kind);
+    history.pushState({ pvLayers: layers.length }, '');
+  }
+  function back() {
+    if (layers.length) history.back();
+    else if (sheetOpen) closeSheet();
+    else closeSection();
+  }
+  addEventListener('popstate', () => {
+    const kind = layers.pop();
+    if (kind === 'sheet') closeSheet();
+    else if (kind === 'sub') closeSection();
+  });
+
   menu.addEventListener('pointerover', (e) => {
+    if (e.pointerType === 'touch') return; // on phones a tap does the work, not a finger passing over
     const b = e.target.closest('.bar, .sub__bar');
     if (b) highlight(b);
   });
@@ -84,48 +142,75 @@ export function initUI({ still }) {
     const b = e.target.closest('.bar, .sub__bar');
     if (b) highlight(b);
   });
-  const narrow = matchMedia('(max-width: 899px)');
   menu.addEventListener('click', (e) => {
     const b = e.target.closest('.bar, .sub__bar');
     if (!b) return;
-    // on phones the details box sits under the menu, so bring it into view after a tap
-    if (narrow.matches && (!isMain(b) || !mainOf(b).querySelector('.sub'))) {
-      requestAnimationFrame(() => box.scrollIntoView({ behavior: 'smooth', block: 'nearest' }));
-    }
+    const phone = narrow();
     if (isMain(b)) {
       const li = mainOf(b);
-      const sub = li.querySelector('.sub');
+      const sub = subOf(li);
       if (sub && !sub.hidden) {
-        openSub(null);
-        highlight(b);
-      } else if (!openSub(li, e.detail === 0)) {
-        highlight(b);
-      } else if (e.detail !== 0) {
-        highlight(li.querySelector('.sub__bar'));
+        // an open section's bar takes you back out
+        if (phone && layers.at(-1) === 'sub') back();
+        else closeSection();
+        return;
       }
+      if (sub) {
+        openSub(li, !phone && e.detail === 0);
+        if (phone) {
+          highlight(b);
+          pushLayer('sub');
+        } else if (e.detail !== 0) {
+          highlight(li.querySelector('.sub__bar'));
+        }
+        return;
+      }
+      openSub(null);
+      highlight(b);
+      if (phone) openSheet();
       return;
     }
     highlight(b);
-    if (b.dataset.href) window.open(b.dataset.href, '_blank', 'noopener');
+    if (b.dataset.href) {
+      window.open(b.dataset.href, '_blank', 'noopener');
+      return;
+    }
+    if (phone) openSheet();
   });
   menu.addEventListener('keydown', (e) => {
     const b = e.target.closest('.bar, .sub__bar');
     if (!b) return;
-    const visible = [...menu.querySelectorAll('.bar, .sub:not([hidden]) .sub__bar')];
+    const visible = [...menu.querySelectorAll('.bar, .sub:not([hidden]) .sub__bar')].filter((x) => x.offsetParent);
     const i = visible.indexOf(b);
     if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
       e.preventDefault();
       const step = e.key === 'ArrowDown' ? 1 : -1;
       highlight(visible[(i + step + visible.length) % visible.length], { focus: true });
-    } else if (e.key === 'ArrowRight' && isMain(b)) {
+    } else if (e.key === 'ArrowRight' && isMain(b) && subOf(mainOf(b))?.hidden) {
       e.preventDefault();
-      openSub(mainOf(b), true);
+      b.click();
     } else if ((e.key === 'ArrowLeft' || e.key === 'Escape') && !isMain(b)) {
       e.preventDefault();
-      const li = mainOf(b);
-      openSub(null);
-      highlight(li.querySelector('.bar'), { focus: true });
+      if (narrow() && layers.at(-1) === 'sub') back();
+      else closeSection();
     }
+  });
+
+  closeBtn.addEventListener('click', back);
+  scrim.addEventListener('click', back);
+  addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && sheetOpen) {
+      e.preventDefault();
+      back();
+    }
+  });
+  narrowQuery.addEventListener('change', () => {
+    // leaving the phone layout: drop the sheet and forget the phone back-stack
+    if (!narrow()) {
+      closeSheet();
+      layers.length = 0;
+    }
+    requestAnimationFrame(placePointer);
   });
 
   document.querySelector('[data-show="controls"]')?.addEventListener('click', () => showCard('controls'));
