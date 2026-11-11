@@ -29,8 +29,8 @@
         "sameAs": ["https://www.linkedin.com/in/mason-wheare", "https://github.com/masonwgit"]
       }
     </script>
-    <script type="module" crossorigin src="/assets/index-BB0KSllQ.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CjsWbvy6.css">
+    <script type="module" crossorigin src="/assets/index-Csb2x2pd.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-B_gd6EIL.css">
   </head>
   <body>
     <div class="screen">
@@ -59,10 +59,10 @@
         </span>
         <ul>
           <li>
-            <button class="bar" type="button" data-card="about" data-shot="0">About</button>
+            <button class="bar" type="button" data-card="about" data-shot="0"><span class="bar__label">About</span></button>
           </li>
           <li>
-            <button class="bar" type="button" data-card="experience" data-shot="1" aria-expanded="false" aria-controls="sub-experience">Experience</button>
+            <button class="bar" type="button" data-card="experience" data-shot="1" aria-expanded="false" aria-controls="sub-experience"><span class="bar__label">Experience</span></button>
             <ul class="sub" id="sub-experience">
               <li><button class="sub__bar" type="button" data-card="marketing">Director of Marketing</button></li>
               <li><button class="sub__bar" type="button" data-card="captain">Team Captain, ADF CSC</button></li>
@@ -73,7 +73,7 @@
             </ul>
           </li>
           <li>
-            <button class="bar" type="button" data-card="work" data-shot="2" aria-expanded="false" aria-controls="sub-work">Work</button>
+            <button class="bar" type="button" data-card="work" data-shot="2" aria-expanded="false" aria-controls="sub-work"><span class="bar__label">Work</span></button>
             <ul class="sub" id="sub-work">
               <li><button class="sub__bar" type="button" data-card="chase">Chase Docklands</button></li>
               <li><button class="sub__bar" type="button" data-card="kea">Kea Ridge</button></li>
@@ -82,7 +82,7 @@
             </ul>
           </li>
           <li>
-            <button class="bar" type="button" data-card="skills" data-shot="3" aria-expanded="false" aria-controls="sub-skills">Skills</button>
+            <button class="bar" type="button" data-card="skills" data-shot="3" aria-expanded="false" aria-controls="sub-skills"><span class="bar__label">Skills</span></button>
             <ul class="sub" id="sub-skills">
               <li><button class="sub__bar" type="button" data-card="study">Study</button></li>
               <li><button class="sub__bar" type="button" data-card="security">Security</button></li>
@@ -91,7 +91,7 @@
             </ul>
           </li>
           <li>
-            <button class="bar" type="button" data-card="contact" data-shot="5" aria-expanded="false" aria-controls="sub-contact">Contact</button>
+            <button class="bar" type="button" data-card="contact" data-shot="5" aria-expanded="false" aria-controls="sub-contact"><span class="bar__label">Contact</span></button>
             <ul class="sub" id="sub-contact">
               <li><button class="sub__bar" type="button" data-card="linkedin" data-href="https://www.linkedin.com/in/mason-wheare">LinkedIn</button></li>
               <li><button class="sub__bar" type="button" data-card="github" data-href="https://github.com/masonwgit">GitHub</button></li>
@@ -101,7 +101,9 @@
         </ul>
       </nav>
 
-      <section class="box" aria-live="polite" aria-label="Details">
+      <section class="box" aria-label="Details">
+        <button class="box__close" type="button" aria-label="Close details"><span aria-hidden="true">✕</span> Close</button>
+        <div class="box__body" aria-live="polite">
         <article class="card" data-card="about">
           <p class="card__kicker">Melbourne, Australia</p>
           <h2>About</h2>
@@ -246,6 +248,7 @@
             <li>Click the crystal in the pavilion</li>
           </ul>
         </article>
+        </div>
       </section>
 
       <div class="strip strip--player">
@@ -254,6 +257,7 @@
       </div>
 
       <button class="corner" type="button" data-show="controls">Controls</button>
+      <div class="scrim" hidden></div>
     </div>
 
   </body>
