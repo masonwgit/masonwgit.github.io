@@ -1,201 +1,260 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mason Wheare | Personal Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="timeline.js" defer></script>
-</head>
-<body>
-    <header>
-        <nav>
-            <div class="logo">Mason Wheare</div>
-            <div class="nav-links">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#timeline" class="nav-link">Timeline</a>
-                <a href="#goals" class="nav-link">Goals</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </div>
-            <div class="hamburger">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-            </div>
-        </nav>
-    </header>
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Mason Wheare | Cyber security, RISC and Kea Ridge</title>
+    <meta name="description" content="Mason Wheare: cyber security student at RMIT, Director of Marketing at RISC, ADF Cyber Skills Challenge team captain and founder of Kea Ridge, Melbourne." />
+    <meta name="theme-color" content="#eceef4" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href="https://masonwgit.github.io/" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:url" content="https://masonwgit.github.io/" />
+    <meta property="og:title" content="Mason Wheare" />
+    <meta property="og:description" content="Cyber security student at RMIT. Director of Marketing at RISC. ADF Cyber Skills Challenge team captain. Founder of Kea Ridge." />
+    <meta property="og:image" content="https://masonwgit.github.io/og.jpg" />
+    <meta property="profile:first_name" content="Mason" />
+    <meta property="profile:last_name" content="Wheare" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Mason Wheare",
+        "url": "https://masonwgit.github.io/",
+        "jobTitle": "Cyber security student",
+        "affiliation": { "@type": "CollegeOrUniversity", "name": "RMIT University" },
+        "memberOf": { "@type": "Organization", "name": "RISC, RMIT Information Security Collective" },
+        "address": { "@type": "PostalAddress", "addressLocality": "Melbourne", "addressRegion": "VIC", "addressCountry": "AU" },
+        "sameAs": ["https://www.linkedin.com/in/mason-wheare", "https://github.com/masonwgit"]
+      }
+    </script>
+    <script type="module" crossorigin src="/assets/index-BB0KSllQ.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CjsWbvy6.css">
+  </head>
+  <body>
+    <div class="screen">
+      <header class="title">
+        <h1 class="title__name">Mason Wheare</h1>
+        <p class="title__sub">Cyber Security</p>
+      </header>
 
-    <section id="home" class="hero">
-        <div class="particles-container" id="particles-js"></div>
-        <div class="hero-content">
-            <div class="hero-text-container">
-                <h1 class="animate-text">Mason <span class="highlight">Wheare</span></h1>
-                <div class="typewriter">
-                    <p class="animate-text-delay">I'm a <span class="typed-text"></span></p>
-                </div>
-                <div class="hero-buttons">
-                    <a href="#about" class="btn btn-primary">About Me</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                </div>
-                <div class="social-links">
-                    <a href="https://github.com/masonwgit" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
-                    <a href="https://instagram.com/mason.wheare" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    <a href="https://linkedin.com/in/mason-wheare" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="mouse">
-                <div class="wheel"></div>
-            </div>
-            <div class="arrow">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </section>
+      <div class="hints">
+        <a class="hint" href="https://www.linkedin.com/in/mason-wheare" target="_blank" rel="noopener"><span class="glyph glyph--diamond" aria-hidden="true"></span>LinkedIn</a>
+        <a class="hint" href="https://github.com/masonwgit" target="_blank" rel="noopener"><span class="glyph glyph--ring" aria-hidden="true"></span>GitHub</a>
+      </div>
 
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-image">
-                    <div class="image-container">
-                        <div class="image-placeholder">
-                            <i class="fas fa-user"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-text">
-                    <p>I'm a dedicated and hardworking individual with a passion for technology and cybersecurity. Currently working as a Pharmacy Assistant, I'm building practical skills in a professional environment while pursuing my interest in digital security.</p>
-                    <p>With experience in customer service and a background in leadership as a former School Captain, I bring strong communication skills and a commitment to excellence to everything I do.</p>
-                    <p>I'm actively involved in the Young Liberals, demonstrating my interest in policy and community engagement. My goal is to complete a Bachelor of Cybersecurity at RMIT and build a career protecting digital infrastructure.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+      <div class="strip strip--time" aria-hidden="true">
+        <span class="strip__label">Time</span>
+        <span class="strip__value" data-clock>--/--/-- (---) --:--:--</span>
+      </div>
 
-    <section id="timeline" class="timeline">
-        <div class="container">
-            <h2 class="section-title">My Journey</h2>
-            <div class="timeline-container">
-                <!-- Timeline items will be loaded dynamically from XML -->
-            </div>
-        </div>
-    </section>
+      <div class="stage">
+        <canvas id="scene" role="img" aria-label="A live 3D render of a marble pavilion on a calm sea, with white cliffs in the distance"></canvas>
+      </div>
 
-    <section id="goals" class="goals">
-        <div class="container">
-            <h2 class="section-title">Future Goals</h2>
-            <div class="goals-container">
-                <div class="goal-card">
-                    <div class="goal-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>Bachelor of Cybersecurity</h3>
-                    <p>Planning to study at RMIT University to gain comprehensive knowledge in cybersecurity principles, ethical hacking, and digital forensics.</p>
-                </div>
-                <div class="goal-card">
-                    <div class="goal-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Cybersecurity Career</h3>
-                    <p>Aspire to build a career in cybersecurity, protecting digital infrastructure and helping organizations maintain their security posture.</p>
-                </div>
-                <div class="goal-card">
-                    <div class="goal-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <h3>Professional Certifications</h3>
-                    <p>Aim to obtain industry-recognized certifications such as CompTIA Security+, CEH, and CISSP to validate my expertise.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+      <nav class="menu" aria-label="Main menu">
+        <span class="pointer" aria-hidden="true">
+          <svg viewBox="0 0 40 28" width="40" height="28"><defs><linearGradient id="gem" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1f3ff" /><stop offset=".48" stop-color="#9aa8f2" /><stop offset=".52" stop-color="#5565cf" /><stop offset="1" stop-color="#2b3796" /></linearGradient></defs><path d="M2 14 12 3h14l12 11-12 11H12Z" fill="url(#gem)" stroke="#1d2468" stroke-width="1.2" stroke-linejoin="round" /><path d="M12 3l6 11-6 11M26 3l-8 11 8 11M2 14h36" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width=".8" /></svg>
+        </span>
+        <ul>
+          <li>
+            <button class="bar" type="button" data-card="about" data-shot="0">About</button>
+          </li>
+          <li>
+            <button class="bar" type="button" data-card="experience" data-shot="1" aria-expanded="false" aria-controls="sub-experience">Experience</button>
+            <ul class="sub" id="sub-experience">
+              <li><button class="sub__bar" type="button" data-card="marketing">Director of Marketing</button></li>
+              <li><button class="sub__bar" type="button" data-card="captain">Team Captain, ADF CSC</button></li>
+              <li><button class="sub__bar" type="button" data-card="founder">Founder, Kea Ridge</button></li>
+              <li><button class="sub__bar" type="button" data-card="committee">General Committee</button></li>
+              <li><button class="sub__bar" type="button" data-card="pharmacy">Pharmacy Assistant</button></li>
+              <li><button class="sub__bar" type="button" data-card="kfc">Cook, KFC</button></li>
+            </ul>
+          </li>
+          <li>
+            <button class="bar" type="button" data-card="work" data-shot="2" aria-expanded="false" aria-controls="sub-work">Work</button>
+            <ul class="sub" id="sub-work">
+              <li><button class="sub__bar" type="button" data-card="chase">Chase Docklands</button></li>
+              <li><button class="sub__bar" type="button" data-card="kea">Kea Ridge</button></li>
+              <li><button class="sub__bar" type="button" data-card="mineguard">MineGuard AI</button></li>
+              <li><button class="sub__bar" type="button" data-card="pavilion">The pavilion</button></li>
+            </ul>
+          </li>
+          <li>
+            <button class="bar" type="button" data-card="skills" data-shot="3" aria-expanded="false" aria-controls="sub-skills">Skills</button>
+            <ul class="sub" id="sub-skills">
+              <li><button class="sub__bar" type="button" data-card="study">Study</button></li>
+              <li><button class="sub__bar" type="button" data-card="security">Security</button></li>
+              <li><button class="sub__bar" type="button" data-card="building">Building</button></li>
+              <li><button class="sub__bar" type="button" data-card="marketing-skills">Marketing</button></li>
+            </ul>
+          </li>
+          <li>
+            <button class="bar" type="button" data-card="contact" data-shot="5" aria-expanded="false" aria-controls="sub-contact">Contact</button>
+            <ul class="sub" id="sub-contact">
+              <li><button class="sub__bar" type="button" data-card="linkedin" data-href="https://www.linkedin.com/in/mason-wheare">LinkedIn</button></li>
+              <li><button class="sub__bar" type="button" data-card="github" data-href="https://github.com/masonwgit">GitHub</button></li>
+              <li><button class="sub__bar" type="button" data-card="instagram" data-href="https://instagram.com/mason.wheare">Instagram</button></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
 
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h3>Email</h3>
-                            <p>contact@masonwheare.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h3>Location</h3>
-                            <p>Melbourne, Australia</p>
-                        </div>
-                    </div>
-                    <div class="contact-social">
-                        <h3>Connect With Me</h3>
-                        <div class="social-links">
-                            <a href="https://github.com/masonwgit" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
-                            <a href="https://instagram.com/mason.wheare" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
-                            <a href="https://linkedin.com/in/mason-wheare" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <form id="discord-form">
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" id="subject" name="subject" placeholder="Subject" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">
-                            <span>Send Message</span>
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+      <section class="box" aria-live="polite" aria-label="Details">
+        <article class="card" data-card="about">
+          <p class="card__kicker">Melbourne, Australia</p>
+          <h2>About</h2>
+          <p>I'm a cyber security student at RMIT University in Melbourne. I'm most interested in how systems break, whether that's a weak cipher, a leaky network or a website that trusts the wrong input, and how to fix them before someone else finds out the hard way.</p>
+          <p>Outside of uni I'm Director of Marketing at RISC, I'm captaining one of RMIT's 4 teams in this year's ADF Cyber Skills Challenge, and I build websites for local businesses through Kea Ridge, so what I learn ends up in things real customers use every day.</p>
+        </article>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">Mason Wheare</div>
-                <div class="footer-links">
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#timeline">Timeline</a>
-                    <a href="#goals">Goals</a>
-                    <a href="#contact">Contact</a>
-                </div>
-                <div class="footer-social">
-                    <a href="https://github.com/masonwgit" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://instagram.com/mason.wheare" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://linkedin.com/in/mason-wheare" target="_blank"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Mason Wheare. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
+        <article class="card" data-card="experience">
+          <h2>Experience</h2>
+          <p>Leading at RISC and in the ADF Cyber Skills Challenge, running my own studio, and the jobs before that. Pick a role to read more.</p>
+        </article>
+        <article class="card" data-card="marketing">
+          <p class="card__kicker">Nov 2026 to now</p>
+          <h2>Director of Marketing</h2>
+          <p class="card__org">RISC, RMIT Information Security Collective</p>
+          <p>Elected to the 2027 executive. I look after the club's social media, branding and the campaigns that bring new members in and get them along to events.</p>
+        </article>
+        <article class="card" data-card="captain">
+          <p class="card__kicker">Nov 2026</p>
+          <h2>Team Captain, NoRISCNoReward</h2>
+          <p class="card__org">ADF Cyber Skills Challenge 2026</p>
+          <p>Captaining one of 4 RMIT teams, picked through RISC, in the Australian Defence Force's annual cyber competition. I'm the team's contact with the organisers, and I set up our Discord with a custom bot to track challenges and handovers across the 3 days.</p>
+        </article>
+        <article class="card" data-card="founder">
+          <p class="card__kicker">Nov 2026 to now</p>
+          <h2>Founder</h2>
+          <p class="card__org">Kea Ridge</p>
+          <p>My own brand for taking on the problems other people walk past. The first experiment is a small web studio building websites and software for Melbourne businesses.</p>
+        </article>
+        <article class="card" data-card="committee">
+          <p class="card__kicker">2026</p>
+          <h2>General Committee</h2>
+          <p class="card__org">RISC, RMIT Information Security Collective</p>
+          <p>On the club's general committee through 2026, before stepping up to the executive.</p>
+        </article>
+        <article class="card" data-card="pharmacy">
+          <p class="card__kicker">Jan 2024 to now</p>
+          <h2>Pharmacy Assistant</h2>
+          <p class="card__org">Community pharmacy</p>
+        </article>
+        <article class="card" data-card="kfc">
+          <p class="card__kicker">2023</p>
+          <h2>Cook</h2>
+          <p class="card__org">KFC</p>
+        </article>
 
-    <script src="script.js"></script>
-</body>
-</html> 
+        <article class="card" data-card="work">
+          <h2>Selected work</h2>
+          <p>A live restaurant website, my own brand, a uni project and the scene you're looking at. Pick one to read more.</p>
+        </article>
+        <article class="card" data-card="chase">
+          <p class="card__kicker">Restaurant website, live</p>
+          <h2>Chase Docklands</h2>
+          <p>A full rebuild for a Middle Eastern fusion restaurant in Docklands. Customers can order from the menu, including at their table by scanning a QR code, book a table with a deposit, and browse events and blog pages the owner updates themselves. Every page is set up to be found on Google.</p>
+          <p><a class="card__link" href="https://www.chasedocklands.com.au" target="_blank" rel="noopener">chasedocklands.com.au ↗</a></p>
+        </article>
+        <article class="card card--kea" data-card="kea">
+          <svg class="card__mark" viewBox="5 9.789 85.931 85.931" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M 69.221 66.823 A 32 32 0 1 1 58.823 22.779 A 57.157 57.157 0 0 1 83.614 87.508 A 32 32 0 0 0 69.221 66.823 Z M 67.157 50 A 25.157 25.157 0 1 1 16.843 50 A 25.157 25.157 0 1 1 67.157 50 Z M 60.762 41.826 A 5.536 5.536 0 1 1 49.69 41.826 A 5.536 5.536 0 1 1 60.762 41.826 Z" /></svg>
+          <p class="card__kicker">Brand and website</p>
+          <h2>Kea Ridge</h2>
+          <p>An identity built on golden-ratio geometry, one ring and one kea, and a site that works as an open notebook of experiments, field notes and studio work.</p>
+        </article>
+        <article class="card" data-card="mineguard">
+          <p class="card__kicker">Uni project, Foundations of AI</p>
+          <h2>MineGuard AI</h2>
+          <p>A group concept for keeping small underground mines safe. Sensors and weather data feed a model on the worker's phone that can pull people out on its own but can never clear a zone as safe. I built the clickable prototype and pitched it.</p>
+        </article>
+        <article class="card" data-card="pavilion">
+          <p class="card__kicker">This site</p>
+          <h2>The pavilion</h2>
+          <p>The scene on this screen is rendered live in your browser: procedural marble, a mirror floor, a sea and cliffs grown from code, in the style of late-90s 3D renders. It only draws when the camera moves. Try clicking the crystal.</p>
+        </article>
+
+        <article class="card" data-card="skills">
+          <h2>Skills and study</h2>
+          <p>Where I study and what I can do. Pick a group to read more.</p>
+        </article>
+        <article class="card" data-card="study">
+          <h2>Study</h2>
+          <ul class="card__list">
+            <li><strong>RMIT University</strong> Bachelor of Cyber Security, 2026 to now</li>
+            <li><strong>Fountain Gate Secondary College</strong> VCE, 2023 to 2025</li>
+            <li><strong>Timbarra P-9 College</strong> School Captain, 2022</li>
+          </ul>
+        </article>
+        <article class="card" data-card="security">
+          <h2>Security</h2>
+          <ul class="card__list">
+            <li>Cryptography: RSA, AES, signatures, hybrid encryption</li>
+            <li>Steganography</li>
+            <li>Packet analysis in Wireshark</li>
+            <li>Network design: VLANs, routing and DNS</li>
+            <li>CTFs across web, forensics, OSINT and reversing</li>
+          </ul>
+        </article>
+        <article class="card" data-card="building">
+          <h2>Building</h2>
+          <ul class="card__list">
+            <li>Python</li>
+            <li>JavaScript and TypeScript</li>
+            <li>React and Next.js</li>
+            <li>WebGL and three.js</li>
+            <li>Git</li>
+          </ul>
+        </article>
+        <article class="card" data-card="marketing-skills">
+          <h2>Marketing</h2>
+          <ul class="card__list">
+            <li>Social media content</li>
+            <li>Campaigns and events</li>
+            <li>Video editing for LinkedIn and Instagram</li>
+            <li>Branding and logo systems</li>
+          </ul>
+        </article>
+
+        <article class="card" data-card="contact">
+          <h2>Contact</h2>
+          <p>LinkedIn is the best place to reach me. I'm always happy to chat about security, CTFs or websites.</p>
+        </article>
+        <article class="card" data-card="linkedin">
+          <p class="card__kicker">Best way to reach me</p>
+          <h2>LinkedIn</h2>
+          <p><a class="card__link" href="https://www.linkedin.com/in/mason-wheare" target="_blank" rel="noopener">linkedin.com/in/mason-wheare ↗</a></p>
+        </article>
+        <article class="card" data-card="github">
+          <p class="card__kicker">Code</p>
+          <h2>GitHub</h2>
+          <p><a class="card__link" href="https://github.com/masonwgit" target="_blank" rel="noopener">github.com/masonwgit ↗</a></p>
+        </article>
+        <article class="card" data-card="instagram">
+          <p class="card__kicker">Everything else</p>
+          <h2>Instagram</h2>
+          <p><a class="card__link" href="https://instagram.com/mason.wheare" target="_blank" rel="noopener">@mason.wheare ↗</a></p>
+        </article>
+
+        <article class="card" data-card="controls">
+          <h2>Controls</h2>
+          <ul class="card__list">
+            <li>Hover or tap a menu bar to see what it is, click it to open it</li>
+            <li>Arrow keys move the cursor once you're in the menu</li>
+            <li>Right arrow or Enter opens, left arrow or Esc goes back</li>
+            <li>Click the crystal in the pavilion</li>
+          </ul>
+        </article>
+      </section>
+
+      <div class="strip strip--player">
+        <span class="strip__label">Player</span>
+        <span class="strip__value">Mason Wheare</span>
+      </div>
+
+      <button class="corner" type="button" data-show="controls">Controls</button>
+    </div>
+
+  </body>
+</html>
