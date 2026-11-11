@@ -81,6 +81,7 @@ button {
   bottom: 0;
   left: 26%;
   right: 0;
+  overflow: hidden;
 }
 /* pearl fades over the scene's edges so it sits in the menu like artwork */
 .stage::after {
@@ -106,6 +107,20 @@ button {
 .is-ready #scene {
   opacity: 1;
 }
+.stage__still {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(16px) saturate(1.1);
+  transform: scale(1.08);
+  transition: opacity 0.6s ease 0.9s;
+}
+.is-ready .stage__still,
+.no-webgl .stage__still {
+  opacity: 0;
+}
 .no-webgl .stage {
   background: url('/poster.jpg') center / cover no-repeat;
 }
@@ -125,8 +140,20 @@ button {
   font: 400 clamp(30px, 3vw, 42px) / 1 var(--display);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--ink);
-  text-shadow: 0 1px 0 #fff, 0 3px 10px rgba(23, 26, 61, 0.15);
+  color: transparent;
+  background: linear-gradient(110deg, var(--ink) 0 42%, #a7b4ff 50%, var(--ink) 58% 100%) 100% 0 / 260% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: drop-shadow(0 1px 0 #fff) drop-shadow(0 3px 8px rgba(23, 26, 61, 0.14));
+  animation: sheen 1.8s ease-in-out 0.6s 1 both;
+}
+@keyframes sheen {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 0 0;
+  }
 }
 .title__sub {
   display: flex;
@@ -327,6 +354,23 @@ button {
 .bar.is-current {
   color: #172066;
 }
+.bar[aria-expanded] .bar__label::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 46px;
+  width: 8px;
+  height: 8px;
+  margin-top: -5px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  opacity: 0.5;
+  transform: rotate(-45deg);
+  transition: transform 0.2s ease;
+}
+.bar[aria-expanded='true'] .bar__label::after {
+  transform: rotate(45deg);
+}
 .bar.is-active {
   transform: translateX(8px);
 }
@@ -386,6 +430,21 @@ button {
 }
 
 /* the description box */
+.card__shot {
+  margin: 2px 0 16px;
+  overflow: hidden;
+  border: 1px solid #c3c6d4;
+  border-radius: 3px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(22, 26, 60, 0.14);
+}
+.card__shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 30vh;
+  object-fit: cover;
+}
 .box {
   position: absolute;
   right: var(--edge);
@@ -482,6 +541,13 @@ button {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   cursor: pointer;
+}
+.corner--sound {
+  right: 96px;
+}
+.corner--sound[aria-pressed='true'] {
+  background: linear-gradient(180deg, #6274ea, #2d3eb2);
+  border-color: #131a5a;
 }
 .corner:hover {
   background: linear-gradient(180deg, #6b7092, #30355a);
@@ -610,6 +676,9 @@ button {
   .menu.is-open > ul > li:not(.is-open) {
     display: none;
   }
+  .menu.is-open > ul > li.is-open > .bar .bar__label::after {
+    display: none;
+  }
   .menu.is-open > ul > li.is-open > .bar .bar__label::before {
     content: '';
     display: inline-block;
@@ -674,7 +743,8 @@ button {
   #scene {
     transition: none;
   }
-  .pointer svg {
+  .pointer svg,
+  .title__name {
     animation: none;
   }
 }
