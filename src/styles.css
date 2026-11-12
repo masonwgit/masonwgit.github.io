@@ -451,7 +451,7 @@ button {
   bottom: 96px;
   z-index: 3;
   width: min(560px, 42vw);
-  max-height: calc(100svh - 300px);
+  max-height: calc(100svh - 210px);
   overflow: auto;
   padding: 22px 28px 24px;
   background: linear-gradient(180deg, #ffffff, #f2f3f8);
@@ -572,7 +572,7 @@ button {
   }
   .box {
     bottom: 86px;
-    max-height: calc(100svh - 250px);
+    max-height: calc(100svh - 190px);
   }
 }
 

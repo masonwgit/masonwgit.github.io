@@ -37,7 +37,7 @@ Handy URL switches while working on it:
 - Dates: General Committee 2026, Director of Marketing from Nov 2026, VCE 2023 to 2025, School Captain 2022.
 - Pharmacy Assistant (from Jan 2024) and KFC (2023): still accurate, and still wanted?
 - Team name NoRISCNoReward: is that the official name for the ADF Cyber Skills Challenge?
-- MineGuard AI (uni group project) and Instagram: keep or drop?
+- MineGuard AI (uni group project): keep or drop?
 - No email shown yet. No résumé PDF yet.
 - Kea Ridge card has no link until its domain is live.
 - Left out from the 2025 site: Young Liberals and primary school.
