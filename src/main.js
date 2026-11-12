@@ -16,7 +16,22 @@ function hasWebGL2() {
   }
 }
 
+let avatar = null;
+
 if (hasWebGL2() && !params.has('nogl')) {
+  // Mason as a low-poly character, drawn on his own small canvas in front of the scene
+  import('./scene/avatar.js')
+    .then(({ createAvatar }) => {
+      avatar = createAvatar(document.querySelector('.character__gl'), { reducedMotion, still });
+      document.querySelector('.menu')?.addEventListener('click', (e) => {
+        if (e.target.closest('.sub__bar:not([data-href])')) avatar.react('select');
+      });
+      if (params.has('debug')) window.pvAvatar = avatar;
+    })
+    .catch((err) => {
+      console.error(err);
+      document.documentElement.classList.add('no-avatar');
+    });
   import('./scene/world.js')
     .then(({ createWorld }) => {
       const world = createWorld(document.getElementById('scene'), {
@@ -26,8 +41,9 @@ if (hasWebGL2() && !params.has('nogl')) {
           ui.ready();
           window.__ready = true;
         },
-        onFrame: () => {
+        onFrame: ({ dusk }) => {
           window.__frames = (window.__frames || 0) + 1;
+          avatar?.setDusk(dusk);
         },
       });
       ui.attach(world);

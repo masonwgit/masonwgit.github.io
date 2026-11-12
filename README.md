@@ -1,8 +1,10 @@
 # Mason Wheare, personal site
 
-A one-screen portfolio laid out like a PSP-era game menu: silver menu bars on the left (About, Experience, Work, Skills, Contact) with sub-items, a crystal cursor, a details box, a live TIME strip (Melbourne time) and a PLAYER strip. The artwork on the right is a live WebGL scene in the style of late-90s Bryce renders: a marble pavilion with a mirror checkerboard floor, a hanging crystal and a sea of stratified white cliffs. Picking a section moves the camera to its shot, ending on the pavilion at dusk. On phones it's one screen too: title, scene, then the menu at the bottom. Tapping a section swaps the list for its items (with a back arrow), tapping an item slides the details up in a sheet, and the phone's back gesture closes the sheet, then the section, before it leaves the site. Mouse, touch and keyboard all work (arrows, Enter, Esc).
+A one-screen portfolio laid out like a PSP-era game menu: silver menu bars on the left (About, Experience, Work, Skills, Contact) with sub-items, a crystal cursor, a details box and a live TIME strip (Melbourne time). Mason stands in front of the scene as a low-poly 3D character, the way a game shows its hero on the main menu. The artwork on the right is a live WebGL scene in the style of late-90s Bryce renders: a marble pavilion with a mirror checkerboard floor, a hanging crystal and a sea of stratified white cliffs. Picking a section moves the camera to its shot, ending on the pavilion at dusk. On phones it's one screen too: title, scene, then the menu at the bottom. Tapping a section swaps the list for its items (with a back arrow), tapping an item slides the details up in a sheet, and the phone's back gesture closes the sheet, then the section, before it leaves the site. Mouse, touch and keyboard all work (arrows, Enter, Esc).
 
 Every section and item has its own address to share, for example `masonwgit.github.io/#experience/captain` or `#work/chase`, and the back button steps back through them. Menu sounds are made in the browser and stay off until someone presses SOUND (desktop), which is remembered. A tiny blurred still of the pavilion shows while the 3D loads. Work cards have preview images in `public/work/`; the home-screen icon and manifest are in `public/`. The scene is original (built from code, no images or models), inspired by the reference render rather than copied from it.
+
+The character is built from code too, PSP-era style: about 2,000 flat-shaded triangles on a small skeleton, a face painted onto a canvas texture, colours and outfit taken from Mason's pitch photos (long charcoal coat, pale blue pinstripe shirt, silver chain). He breathes, blinks, follows the cursor with his head, waves when the page opens or when he's clicked, gestures at the details box when a menu item is picked, and now and then clasps his hands or looks out at the scene. He has his own small canvas, so he sits in front of the scene's faded edges, and he takes on the dusk light when the camera gets there. With reduced motion he stands still.
 
 The scene animates all the time (water, crystal, drifting clouds, a slight camera sway); visitors with reduced motion turned on get a still scene that only redraws when the camera moves. The sky is baked once at load, reflections run at half resolution, and the pixel ratio is capped at 1.25.
 
@@ -18,8 +20,8 @@ npm run preview    # serve dist/ on http://localhost:3401
 Handy URL switches while working on it:
 
 - `?still&item=2` opens menu item 2 and parks the camera on its shot (0 About, 1 Experience, 2 Work, 3 Skills, 4 Contact)
-- `?debug` exposes the scene as `window.pv` in the console
-- `?nogl` shows the no-WebGL fallback (the poster image)
+- `?debug` exposes the scene as `window.pv` and the character as `window.pvAvatar` in the console (`pvAvatar.debug.pose('wave')`, `pvAvatar.debug.frame(1.5, 1.86)` for a close-up of the head)
+- `?nogl` shows the no-WebGL fallback (the poster image and a still render of the character)
 
 ## Where things live
 
@@ -27,8 +29,9 @@ Handy URL switches while working on it:
 - `src/scene/path.js`: one camera shot per section (position, look-at point, field of view) and its caption name.
 - `src/scene/looks.js`: the day and dusk lighting the page drifts between.
 - `src/scene/pavilion.js`, `props.js`, `terrain.js`, `water.js`, `sky.js`: the scene itself. Marble, checkerboards and cliff strata are drawn in shaders (`materials.js`), so there are no texture files.
+- `src/scene/avatar.js`: the character. Body sizes, face painting, poses (written as hand positions, solved with two-bone IK) and the idle behaviour are all in this one file. Where he stands and which way he turns are set in CSS on `.character` (`--fx`, `--face`).
 - `src/ui.js`: the menu (highlight, open, keyboard, cursor), the card swapping, the camera calls and the clock.
-- `public/poster.jpg` and `public/og.jpg`: renders used when WebGL isn't available and as the link preview.
+- `public/poster.jpg`, `public/character/mason-3d.webp` and `public/og.jpg`: renders used when WebGL isn't available and as the link preview. Re-render the character still and the link preview after changing the character.
 
 ## To confirm before it goes live
 
