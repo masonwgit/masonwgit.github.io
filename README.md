@@ -4,7 +4,7 @@ A one-screen portfolio laid out like a PSP-era game menu: silver menu bars on th
 
 Every section and item has its own address to share, for example `masonwgit.github.io/#experience/captain` or `#work/chase`, and the back button steps back through them. Menu sounds are made in the browser and stay off until someone presses SOUND (desktop), which is remembered. A tiny blurred still of the pavilion shows while the 3D loads. Work cards have preview images in `public/work/`; the home-screen icon and manifest are in `public/`. The scene is original (built from code, no images or models), inspired by the reference render rather than copied from it.
 
-It only draws when something moves (a camera move, a resize, a click on the crystal), so it uses no GPU while you read. The sky is baked once at load, reflections run at half resolution, and the pixel ratio is capped at 1.25.
+The scene animates all the time (water, crystal, drifting clouds, a slight camera sway); visitors with reduced motion turned on get a still scene that only redraws when the camera moves. The sky is baked once at load, reflections run at half resolution, and the pixel ratio is capped at 1.25.
 
 ## Run it
 

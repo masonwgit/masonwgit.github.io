@@ -13,8 +13,9 @@ const smooth = (a, b, x) => {
 };
 const easeInOut = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
 
-// Renders on demand: only while the camera moves between sections, on resize, or while
-// the crystal spins. When nothing moves nothing is drawn, so reading the page costs nothing.
+// Animates continuously: the water ripples, the crystal turns, the clouds drift and the camera
+// sways a little. Visitors who ask for reduced motion (and screenshot mode) get a still scene
+// that only redraws when the camera moves between sections.
 export function createWorld(canvas, { reducedMotion = false, still = false, onReady, onFrame } = {}) {
   const host = canvas.parentElement;
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: still });
@@ -72,6 +73,7 @@ export function createWorld(canvas, { reducedMotion = false, still = false, onRe
   let last = 0;
   let live = false;
   let readySent = false;
+  const ambient = !reducedMotion && !still;
 
   function requestRender() {
     if (raf || !live) return;
@@ -127,14 +129,28 @@ export function createWorld(canvas, { reducedMotion = false, still = false, onRe
       if (k < 1) moving = true;
       else tween = null;
     }
-    if (spin > 0.02) {
-      crystal.mesh.rotation.y += dt * spin;
+    if (ambient) {
+      time += dt;
+      crystal.mesh.rotation.y += dt * (0.32 + spin);
       spin *= Math.exp(-dt * 1.3);
-      moving = true;
+      crystal.group.position.y = crystal.baseY + Math.sin(time * 0.9) * 0.07;
+      sky.setRotation(time * 0.0025);
+    } else {
+      if (spin > 0.02) {
+        crystal.mesh.rotation.y += dt * spin;
+        spin *= Math.exp(-dt * 1.3);
+        moving = true;
+      }
+      if (moving) time += dt;
     }
-    if (moving) time += dt;
 
     const fov = path.sample(t, camPos, camLook);
+    if (ambient) {
+      // a slow, small sway so the view never sits dead still
+      camLook.x += Math.sin(time * 0.21) * 0.35;
+      camLook.y += Math.sin(time * 0.17) * 0.18;
+      camPos.x += Math.sin(time * 0.13) * 0.12;
+    }
     camera.position.copy(camPos);
     camera.lookAt(camLook);
     if (Math.abs(fov - camera.fov) > 0.01) {
@@ -149,7 +165,7 @@ export function createWorld(canvas, { reducedMotion = false, still = false, onRe
       readySent = true;
       onReady?.();
     }
-    if (moving) requestRender();
+    if (moving || ambient) requestRender();
   }
 
   function goTo(index) {

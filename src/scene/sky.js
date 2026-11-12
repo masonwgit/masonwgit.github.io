@@ -70,6 +70,7 @@ export function createSkyDome(dayCube, duskCube) {
     uDay: { value: dayCube.texture },
     uDusk: { value: duskCube.texture },
     uMix: { value: 0 },
+    uRot: { value: 0 },
   };
   const material = new THREE.ShaderMaterial({
     uniforms,
@@ -89,9 +90,13 @@ export function createSkyDome(dayCube, duskCube) {
       uniform samplerCube uDay;
       uniform samplerCube uDusk;
       uniform float uMix;
+      uniform float uRot;
       varying vec3 vDir;
       void main() {
-        vec3 d = normalize(vDir);
+        vec3 d0 = normalize(vDir);
+        float cr = cos(uRot);
+        float sr = sin(uRot);
+        vec3 d = vec3(cr * d0.x - sr * d0.z, d0.y, sr * d0.x + cr * d0.z);
         gl_FragColor = vec4(mix(textureCube(uDay, d).rgb, textureCube(uDusk, d).rgb, uMix), 1.0);
         #include <tonemapping_fragment>
         #include <colorspace_fragment>
@@ -105,5 +110,9 @@ export function createSkyDome(dayCube, duskCube) {
     mesh.position.setFromMatrixPosition(cam.matrixWorld);
     mesh.updateMatrixWorld();
   };
-  return { mesh, setMix: (v) => (uniforms.uMix.value = v) };
+  return {
+    mesh,
+    setMix: (v) => (uniforms.uMix.value = v),
+    setRotation: (v) => (uniforms.uRot.value = v),
+  };
 }

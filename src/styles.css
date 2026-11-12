@@ -451,7 +451,7 @@ button {
   bottom: 96px;
   z-index: 3;
   width: min(560px, 42vw);
-  max-height: calc(100svh - 210px);
+  max-height: calc(100svh - 196px);
   overflow: auto;
   padding: 22px 28px 24px;
   background: linear-gradient(180deg, #ffffff, #f2f3f8);
@@ -500,14 +500,15 @@ button {
 }
 .card__list li {
   position: relative;
-  padding: 7px 0 7px 20px;
+  padding: 6px 0 6px 20px;
   border-top: 1px solid #e0e2eb;
+  line-height: 1.5;
 }
 .card__list li::before {
   content: '';
   position: absolute;
   left: 3px;
-  top: 16px;
+  top: 14px;
   width: 7px;
   height: 7px;
   background: #4a5bd0;
