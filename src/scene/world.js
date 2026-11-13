@@ -157,10 +157,9 @@ export function createWorld(canvas, { reducedMotion = false, still = false, onRe
       camera.fov = fov;
       camera.updateProjectionMatrix();
     }
-    const dusk = smooth(3.0, path.last, t);
-    applyLook(dusk);
+    applyLook(smooth(3.0, path.last, t));
     renderer.render(scene, camera);
-    onFrame?.({ t, moving, dusk });
+    onFrame?.({ t, moving });
 
     if (!readySent) {
       readySent = true;

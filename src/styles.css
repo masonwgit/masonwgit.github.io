@@ -264,45 +264,6 @@ button {
 .strip--time {
   top: 62px;
 }
-/* Mason as a low-poly character, standing in front of the scene. The canvas is wider than he is
-   so a wave or a gesture never clips; --fx is where he stands across it, --face the way he turns */
-.character {
-  --ch: min(80vh, 760px);
-  --fx: 0.5;
-  --face: 1;
-  position: absolute;
-  z-index: 1;
-  bottom: 0;
-  left: calc(6% - var(--ch) * 0.12);
-  height: var(--ch);
-  aspect-ratio: 0.82;
-  pointer-events: none;
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.9s ease 0.2s, transform 1.1s cubic-bezier(0.2, 0.7, 0.1, 1) 0.2s;
-}
-.character__gl {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-.character.is-live,
-.no-webgl .character,
-.no-avatar .character {
-  opacity: 1;
-  transform: none;
-}
-.no-webgl .character,
-.no-avatar .character {
-  background: url('/character/mason-3d.webp') 50% 100% / contain no-repeat;
-}
-.no-webgl .character__gl,
-.no-avatar .character__gl {
-  display: none;
-}
-.is-avatar-hover .stage {
-  cursor: pointer;
-}
 
 /* the menu */
 .menu {
@@ -674,17 +635,6 @@ button {
   .glyph--diamond::after {
     inset: 5.5px;
   }
-  .character {
-    --fx: 0.62;
-    --face: -1;
-    left: auto;
-    right: 0;
-    height: 84%;
-  }
-  .no-webgl .character,
-  .no-avatar .character {
-    transform: translateX(12%);
-  }
   .stage::after {
     background:
       linear-gradient(180deg, #eef0f5 0%, rgba(238, 240, 245, 0) 16%),
@@ -794,9 +744,5 @@ button {
   .pointer svg,
   .title__name {
     animation: none;
-  }
-  .character {
-    transition: none;
-    transform: none;
   }
 }
